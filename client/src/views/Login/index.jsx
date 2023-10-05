@@ -109,7 +109,7 @@ function _Login({ form }) {
                     <img src={logo} alt="" className={style["logo"]} />
                     <Text
                         className={style["login-title"]}
-                    >小牧收银系统</Text>
+                    >收银系统</Text>
                 </Row>
                 <Form {...formItemLayout} onSubmit={handleSubmit}
                 >

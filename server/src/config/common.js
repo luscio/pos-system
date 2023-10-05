@@ -10,9 +10,9 @@ const common = {
     default_supplier: "默认供货商",
     default_all_category: "TREE_BASE",
     default_admin_username: "admin",
-    default_admin_password: "password",
+    default_admin_password: "123456",
     default_pos_username: "pos",
-    default_pos_password: "password"
+    default_pos_password: "123456"
 }
 
 export default common;

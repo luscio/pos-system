@@ -13,10 +13,11 @@ const { GLOBAL_TABS_STATUS, GLOBAL_CASH_HOTKEY_SHOW } = config;
 function CustomSwitch({
     status,
     label,
-    toggleFn
+    toggleFn,
+    style,
 }) {
     return (
-        <div>
+        <div style={style}>
             {label}:&nbsp;&nbsp;&nbsp;&nbsp;
             <Switch onChange={toggleFn} checked={status} />
         </div>
@@ -51,13 +52,25 @@ export function SettingDrawer({
         toggleCashHotKey(bool);
     }
 
+    const style = {
+        display: "flex",
+    }
+    const style1 = {
+        ...style,
+        marginTop: "40px",
+    }
+    const style2 = {
+        ...style,
+        marginTop: "20px",
+    }
+
     return (
         <Drawer
             visible={show}
             onClose={hide}
         >
-            <CustomSwitch label="启用多标签" status={showTabs} toggleFn={toggleMulitTabs} />
-            <CustomSwitch label="启用收银热键列表" status={showCashHotKey} toggleFn={toggleCashHotKeyStatus} />
+            <CustomSwitch style={style1} label="启用多标签" status={showTabs} toggleFn={toggleMulitTabs} />
+            <CustomSwitch style={style2} label="启用收银热键列表" status={showCashHotKey} toggleFn={toggleCashHotKeyStatus} />
         </Drawer>
     );
 }

@@ -93,7 +93,7 @@ export function LeftSideMenu({ collapsed }) {
                     backgroundImage: `url(${logo})`
                 }}
             >
-                <p>小牧收银系统</p>
+                <p>收银系统</p>
             </div>
             <Menu
                 style={{

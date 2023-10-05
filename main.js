@@ -7,13 +7,10 @@ const { app, BrowserWindow, protocol, globalShortcut, Menu } = require("electron
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-
-
 Menu.setApplicationMenu(null);
 
 function createWindow() {
     // Create the browser window.
-
     mainWindow = new BrowserWindow({
         width: 1000,
         height: 600,
@@ -31,11 +28,7 @@ function createWindow() {
 
     // 打开开发者工具，默认不打开
     // mainWindow.webContents.openDevTools()
-
     process.env.NODE_ENV === "development" && mainWindow.webContents.openDevTools({ mode: "right" });
-
-    // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on("closed", function () {
@@ -44,19 +37,16 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null;
     });
-
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-
 function startServer() {
-
     const pathname = process.env.NODE_ENV === "development" ?
         path.join(__dirname, ".noserver") : path.join(__dirname, "../../.noserver");
-// 生产环境下__dirname是asar文件所在的目录
-
+    
+    // 生产环境下__dirname是asar文件所在的目录
     fs.readFile(pathname)
         .then(v => console.log("检查到不启动服务器的flag，不启动服务器！"))
         .catch(error => {
@@ -66,9 +56,7 @@ function startServer() {
 }
 
 app.on("ready", () => {
-
     startServer();
-
     protocol.registerFileProtocol("images", (req, cb) => {
         const url = req.url.substr(9);
 
@@ -83,9 +71,7 @@ app.on("ready", () => {
             path: path.normalize(`${__dirname}/client/dist/${url}`)
         })
     });
-
     globalShortcut.register("CmdOrCtrl+R", () => { });
-
     createWindow();
 });
 

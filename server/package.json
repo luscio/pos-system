@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "pos system server",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -13,8 +13,8 @@
     "start": "cross-env NODE_ENV=production JWT_KEY=xiaomupossystem nodemon dist/bundle.cjs",
     "rebuild": "electron-rebuild -f -w sqlite3"
   },
-  "author": "vhvy",
-  "license": "ISC",
+  "author": "luscio",
+  "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "bcrypt": "^3.0.7",
