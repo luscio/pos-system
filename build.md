@@ -12,21 +12,21 @@ npm i -g windows-build-tools
 ### 前端
 ```bash
 cd client
-npm i
+npm install --registry=https://registry.npm.taobao.org
 npm run build:electron
 ```
 
 ### 后端
 ```bash
 cd server
-npm i
+npm install --registry=https://registry.npm.taobao.org
 npm run initdb
 npm run build
 ```
 
 ### Electron
 ```bash
-npm i
+npm install --registry=https://registry.npm.taobao.org
 npm run postinstall
 npm run build
 ```
