@@ -54,6 +54,9 @@ export function SettingDrawer({
 
     const style = {
         display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     }
     const style1 = {
         ...style,
