@@ -54,6 +54,7 @@ route.post("/create", validBody(
     const {
         barcode,
         name,
+        count,
         category_name,
         unit,
         size,
@@ -90,6 +91,7 @@ route.post("/create", validBody(
     const { lastID } = await CommodityTask.createCommodity({
         barcode,
         name,
+        count,
         category_id: validCategoryResult.id,
         unit,
         size,
@@ -115,6 +117,7 @@ route.put("/update", validBody(
     const {
         barcode,
         name,
+        count,
         category_name,
         unit,
         size,
@@ -158,6 +161,7 @@ route.put("/update", validBody(
         current_barcode,
         barcode,
         name,
+        count,
         category_name,
         unit,
         size,

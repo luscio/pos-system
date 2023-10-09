@@ -80,7 +80,6 @@ class CommodityTask {
         }
     }
 
-
     static async getCommodityDetailsByTimestamp(
         timestamp,
         query,
@@ -123,6 +122,7 @@ class CommodityTask {
     static async createCommodity({
         barcode: _barcode,
         name,
+        count,
         category_id,
         unit,
         size,
@@ -146,6 +146,7 @@ class CommodityTask {
         let params = [
             barcode,
             name,
+            count,
             category_id,
             in_price,
             sale_price,
@@ -173,7 +174,7 @@ class CommodityTask {
 
         return await AppDAO.run(`
         INSERT INTO commodity 
-        (barcode, name, category_id, in_price, sale_price, vip_points, pinyin, work_date, change_date, is_delete, supplier_id${query}) 
+        (barcode, name, count, category_id, in_price, sale_price, vip_points, pinyin, work_date, change_date, is_delete, supplier_id${query}) 
         VALUES 
         ${placeholder}
         ;`, params);
@@ -225,6 +226,16 @@ class CommodityTask {
         SET name=? 
         WHERE barcode=?
         ;`, [new_name, barcode]);
+    }
+
+    static async updateCommodityCount(barcode, new_count) {
+        // 修改商品库存
+
+        return await AppDAO.run(`
+        UPDATE commodity 
+        SET count=? 
+        WHERE barcode=?
+        ;`, [new_count, barcode]);
     }
 
     static async updateCommodityCategoryID(barcode, new_category_name) {
@@ -336,6 +347,10 @@ class CommodityTask {
             {
                 key: "name",
                 fn: this.updateCommodityName.bind(this)
+            },
+            {
+                key: "count",
+                fn: this.updateCommodityCount.bind(this)
             },
             {
                 key: "category_name",

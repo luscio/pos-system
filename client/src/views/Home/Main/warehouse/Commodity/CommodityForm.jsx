@@ -144,6 +144,35 @@ export function _BaseForm({ form, selectCommodity, initState, type, closeDrawer,
                 }
             ]
         },
+        // start 2023-10-09 add by luscio
+        {
+            children: [
+                {
+                    label: "库存",
+                    id: "count",
+                    initialValue: initState.count,
+                    rules: [
+                        {
+                            required: true,
+                            message: "库存不能省略!"
+                        },
+                        {
+                            required: true,
+                            validator: (rule, val, callback) => {
+                                if (isNaN(val)) {
+                                    callback("库存必须为数字");
+                                }
+                                if (parseInt(val) < 0) {
+                                    callback("库存不能小于0");
+                                }
+                                callback();
+                            }
+                        },
+                    ]
+                }
+            ]
+        },
+        // end 2023-10-09 add by luscio
         {
             children: [
                 {
@@ -382,6 +411,7 @@ export function CommodityForm({ status = false, type, hideFn, selectCommodity, c
                 barcode: null,//
                 category_name: categories || null,//
                 name: null,//
+                count: 0, // 库存, 2023-10-09 add by luscio
                 in_price: null,//
                 sale_price: null,//
                 pinyin: null,//
