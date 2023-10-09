@@ -55,6 +55,10 @@ class StockTask {
             }
             data.push({
                 commodity_id: result.id,
+                // start 2023-10-09 add by luscio
+                barcode,
+                new_count: result.count + count,
+                // end 2023-10-09 add by luscio
                 count,
                 in_price
             });
@@ -86,6 +90,8 @@ class StockTask {
 
         await this.insertStockDetails(id, list);
 
+        await this.updateCommodityCount(list);
+
         return id;
     }
 
@@ -98,6 +104,13 @@ class StockTask {
             (stock_id, commodity_id, count, in_price) 
             VALUES (?, ?, ?, ?)
             ;`, [stock_id, commodity_id, count, in_price]);
+        }))
+    }
+
+    static async updateCommodityCount(list) {
+        // 进货后更新库存 2023-10-09 add by luscio
+        return await Promise.all(list.map(async ({ barcode, new_count }) => {
+            return await AppDAO.run(`UPDATE commodity SET count=? WHERE barcode=?;`, [new_count, barcode]);
         }))
     }
 }
