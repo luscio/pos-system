@@ -21,6 +21,5 @@ npm run build
 ### Electron
 ```bash
 npm i
-npm run postinstall
 npm run build
 ```
