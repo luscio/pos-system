@@ -225,6 +225,8 @@ class OrdersTask {
 
         await this.saveOrderDetails(order_id, commodity_list_details);
 
+        await this.updateCommodityCount(commodity_list_details);
+
         const data = await this.getOrderAllDetails(order_id);
 
         return {
@@ -247,6 +249,18 @@ class OrdersTask {
                 need_pinyin && (values["pinyin"] = pinyin);
                 return values;
             }));
+    }
+
+    static async updateCommodityCount(commodity_list_details) {
+        // 前台销售后更新库存 2023-10-09 add by luscio
+        return await Promise.all(commodity_list_details.map(async ({ barcode, count }) => {
+            const result = await AppDAO.get(`SELECT * FROM commodity WHERE barcode=?;`, [barcode]);
+            let new_count = result.count - count;
+            if (new_count < 0) {
+                new_count = 0;
+            }
+            return await AppDAO.run(`UPDATE commodity SET count=? WHERE barcode=?;`, [new_count, barcode]);
+        }))
     }
 
     static async getOrderAllDetails(order_id) {
