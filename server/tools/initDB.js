@@ -391,12 +391,12 @@ async function init() {
     await dao.run(`
     CREATE TABLE IF NOT EXISTS store_config (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL DEFAULT "小牧超市"
+        name TEXT NOT NULL DEFAULT "小林超市"
     )
     ;`);
 
     await dao.run(`
-    INSERT INTO store_config (name) VALUES ("小牧超市")
+    INSERT INTO store_config (name) VALUES ("小林超市")
     ;`);
 
     AppDAO.close();

@@ -1,7 +1,7 @@
 const ICON_ONLINE_URL = process.env.TYPE === "offline" ? "icon://static/js/iconfontcn.js" : "/static/js/iconfontcn.js";
 
 export const common = {
-    store_name: "小牧超市",
+    store_name: "小林超市",
     GLOBAL_BASE_URL_KEY: "POSSYSTEM_BASEURL",
     GLOBAL_TOKEN_KEY: "POSSYSTEM_TOKEN",
     GLOBAL_TABS_STATUS: "GLOBAL_TABS_STATUS",
