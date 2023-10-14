@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev:server": "cross-env NODE_ENV=development JWT_KEY=xiaomupossystem nodemon --experimental-modules src/index.js",
-    "build": "cross-env NODE_ENV=production webpack --env.JWT_KEY=xiaomupossystem --config webpack.prod.cjs",
+    "dev:server": "cross-env NODE_ENV=development JWT_KEY=kFwVZjqsqDfd nodemon --experimental-modules src/index.js",
+    "build": "cross-env NODE_ENV=production webpack --env.JWT_KEY=kFwVZjqsqDfd --config webpack.prod.cjs",
     "fakedb": "cross-env NODE_ENV=development node tools/fakeData.js",
     "initdb": "node tools/initDB.js",
-    "start": "cross-env NODE_ENV=production JWT_KEY=xiaomupossystem nodemon dist/bundle.cjs",
+    "start": "cross-env NODE_ENV=production JWT_KEY=kFwVZjqsqDfd nodemon dist/bundle.cjs",
     "rebuild": "electron-rebuild -f -w sqlite3"
   },
   "author": "luscio",
