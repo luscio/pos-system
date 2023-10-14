@@ -13,7 +13,7 @@ function _ConfigForm({ form }) {
     return (
         <Form>
             <Form.Item
-                extra="格式为 http(s)://localhost.local:port"
+                extra="格式为 http(s)://ip:port"
             >
                 {
                     getFieldDecorator(
